@@ -50,9 +50,7 @@ Thumbs.db
 *.key
 credentials.json
 
-# === Project-specific: benchmark data ===
-# Don't commit downloaded datasets, images, parquet files, or model weights.
-# Keep these outside git; document how to obtain them in README instead.
+# proj: 
 data/
 benchmarks/data/
 *.parquet
@@ -69,11 +67,9 @@ benchmarks/data/
 *.pt
 *.bin
 
-# === Project-specific: outputs and logs ===
+
 benchmark_results/
 *.log
 profiling_output/
 flamegraph*.svg
 
-# === Lock file (optional — see notes) ===
-# requirements.lock.txt    # uncomment if you don't want to commit it
