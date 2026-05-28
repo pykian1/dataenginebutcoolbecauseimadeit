@@ -1,0 +1,5 @@
+pytest>=8.0.0            # Test runner. Your decode-late assertion lives here.
+pytest-asyncio>=0.23.0   # Lets pytest run `async def test_...` functions.
+ruff>=0.5.0              # Linter + formatter, fast. Daft uses it.
+ipython>=8.20.0          # Better REPL for poking at Arrow arrays interactively.
+jupyter>=1.0.0           # Optional. For the worked Arrow examples in Ch 3.

@@ -1,0 +1,15 @@
+# === Core: everything depends on these ===
+pyarrow>=18.0.0          # Arrow columnar memory + Parquet I/O. The whole engine.
+numpy>=1.26,<3.0         # Tensor ops, image arrays, scalar math.
+pandas>=2.2.0            # Only for the baseline benchmark in Week 3. Not core.
+
+# === Week 2: multimodal twist ===
+Pillow>=10.0.0           # JPEG/PNG decode. Your ImageDecode UDF uses this.
+aiohttp>=3.9.0           # Async URL downloader (Day 11). Bounded-semaphore HTTP.
+aiofiles>=23.0.0         # Async local file I/O for the URL-or-path abstraction.
+
+# === Week 3: streaming + benchmarking ===
+matplotlib>=3.8.0        # Plot the benchmark results for your README.
+
+# === Dev tools (install separately, see below) ===
+# pytest, ruff, ipython — kept in requirements-dev.txt
