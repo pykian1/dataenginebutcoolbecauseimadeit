@@ -51,6 +51,7 @@ Thumbs.db
 credentials.json
 
 # proj: 
+buildguide_docs.md
 data/
 benchmarks/data/
 *.parquet

@@ -1,0 +1,1 @@
+from minidaft.io.parquet import ParquetScan, Pushdowns
