@@ -9,8 +9,6 @@ Rule = Callable[[LogicalPlan], LogicalPlan]
 
 
 def optimize(plan: LogicalPlan, rules: List[Rule]) -> LogicalPlan:
-    """Apply rules until a fixed point. Returns a *new* plan tree;
-    never mutates in place."""
     current = plan
     while True:
         new = current
@@ -22,8 +20,6 @@ def optimize(plan: LogicalPlan, rules: List[Rule]) -> LogicalPlan:
 
 
 def _map_children(node: LogicalPlan, fn: Rule) -> LogicalPlan:
-    """Apply fn to every child, returning a new node only if something changed.
-    Walks children first so rules can be written bottom-up."""
     if not node.children:
         return node
     new_children = [fn(c) for c in node.children]
@@ -33,10 +29,7 @@ def _map_children(node: LogicalPlan, fn: Rule) -> LogicalPlan:
 
 
 def predicate_pushdown(plan: LogicalPlan) -> LogicalPlan:
-    """Push Filter below Project when safe.
 
-    Filter(Project(child, cols), p) -> Project(Filter(child, p), cols)
-    """
     plan = _map_children(plan, predicate_pushdown)
     if (
         isinstance(plan, Filter)
@@ -53,7 +46,6 @@ def predicate_pushdown(plan: LogicalPlan) -> LogicalPlan:
 
 
 def projection_pushdown(plan: LogicalPlan) -> LogicalPlan:
-    """Push the column list of a Project down into a ParquetScan's pushdowns."""
     plan = _map_children(plan, projection_pushdown)
     if (
         isinstance(plan, Project)
@@ -69,7 +61,6 @@ def projection_pushdown(plan: LogicalPlan) -> LogicalPlan:
 
 
 def filter_combine(plan: LogicalPlan) -> LogicalPlan:
-    """Filter(Filter(x, p), q) -> Filter(x, p AND q)."""
     plan = _map_children(plan, filter_combine)
     if (
         isinstance(plan, Filter)
@@ -83,7 +74,6 @@ def filter_combine(plan: LogicalPlan) -> LogicalPlan:
 
 
 def const_fold(plan: LogicalPlan) -> LogicalPlan:
-    """Fold constant expressions inside a plan: Lit(2) + Lit(3) -> Lit(5)."""
     plan = _map_children(plan, const_fold)
     if isinstance(plan, Filter) and plan.predicate is not None:
         return replace(plan, predicate=_fold_expr(plan.predicate))
@@ -94,7 +84,7 @@ def const_fold(plan: LogicalPlan) -> LogicalPlan:
 
 # --- expression helpers -------------------------------------------------
 
-# Pure binary ops we can evaluate at plan time when both operands are literals.
+
 _FOLDABLE = {
     "add": lambda a, b: a + b,
     "eq": lambda a, b: a == b,
@@ -103,7 +93,7 @@ _FOLDABLE = {
 
 
 def _fold_expr(expr: Expr) -> Expr:
-    """Recursively fold an expression tree's constant subtrees."""
+
     if isinstance(expr, FnCall):
         args = tuple(_fold_expr(a) for a in expr.args)
         if (
@@ -117,7 +107,7 @@ def _fold_expr(expr: Expr) -> Expr:
 
 
 def _is_expensive(expr: Expr) -> bool:
-    """True if any node in the expression tree is flagged is_expensive."""
+
     if isinstance(expr, FnCall):
         return expr.is_expensive or any(_is_expensive(a) for a in expr.args)
     return False
