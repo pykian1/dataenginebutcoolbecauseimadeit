@@ -1,76 +1,38 @@
-# === Python ===
 __pycache__/
 *.py[cod]
-*$py.class
 *.so
-.Python
 
-# === Virtual environments ===
+
 .venv/
-venv/
-env/
-ENV/
 
-# === Build / distribution ===
-build/
-dist/
-*.egg-info/
-*.egg
-.eggs/
-pip-wheel-metadata/
 
-# === Testing / coverage / caches ===
 .pytest_cache/
-.coverage
-.coverage.*
-htmlcov/
-.tox/
-.nox/
-.mypy_cache/
 .ruff_cache/
-.hypothesis/
+.coverage
 
-# === Jupyter ===
+
 .ipynb_checkpoints/
-*-checkpoint.ipynb
 
-# === IDE / editor ===
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+
 .DS_Store
-Thumbs.db
+.vscode/
+.claude/
+*.swp
 
-# === Environment / secrets ===
-.env
-.env.local
-*.pem
-*.key
-credentials.json
 
-# proj: 
-buildguide_docs.md
+private/
 data/
 benchmarks/data/
-*.parquet
-*.csv
-!tests/fixtures/*.parquet     # except tiny test fixtures
-!tests/fixtures/*.csv
-*.jpg
-*.jpeg
-*.png
-*.mp4
-*.avi
-*.npy
-*.npz
-*.pt
-*.bin
-
-
 benchmark_results/
 *.log
-profiling_output/
-flamegraph*.svg
 
+
+*.parquet
+*.csv
+!tests/fixtures/*.parquet
+!tests/fixtures/*.csv
+*.png
+*.jpg
+*.jpeg
+*.npy
+*.npz
