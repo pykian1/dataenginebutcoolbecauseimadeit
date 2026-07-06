@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import Tuple
-from minidaft.dtypes import LogicalType
+from minieng.dtypes import LogicalType
 
 
 @dataclass(frozen=True)

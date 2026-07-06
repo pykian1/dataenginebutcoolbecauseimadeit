@@ -2,9 +2,9 @@ import pytest
 
 import pandas as pd
 import pyarrow as pa
-from minidaft.series import Series
-from minidaft.schema import Schema
-from minidaft.dtypes import LogicalType
+from minieng.series import Series
+from minieng.schema import Schema
+from minieng.dtypes import LogicalType
 
 
 def test_roundtrip_pandas():

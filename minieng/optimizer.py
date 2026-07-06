@@ -1,9 +1,9 @@
 from dataclasses import replace
 from typing import Callable, List
 
-from minidaft.plan import LogicalPlan, Filter, Project
-from minidaft.io.parquet import ParquetScan
-from minidaft.expressions import Expr, Col, Lit, FnCall, and_
+from minieng.plan import LogicalPlan, Filter, Project
+from minieng.io.parquet import ParquetScan
+from minieng.expressions import Expr, Col, Lit, FnCall, and_
 
 Rule = Callable[[LogicalPlan], LogicalPlan]
 

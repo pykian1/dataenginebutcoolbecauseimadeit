@@ -1,7 +1,7 @@
-from minidaft.plan import Source, Filter, Project, Limit
-from minidaft.io.parquet import ParquetScan, Pushdowns
-from minidaft.expressions import col, lit, add, eq, and_, Lit, FnCall
-from minidaft.optimizer import (
+from minieng.plan import Source, Filter, Project, Limit
+from minieng.io.parquet import ParquetScan, Pushdowns
+from minieng.expressions import col, lit, add, eq, and_, Lit, FnCall
+from minieng.optimizer import (
     optimize,
     predicate_pushdown,
     projection_pushdown,

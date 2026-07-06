@@ -1,7 +1,7 @@
 import pyarrow as pa
 from dataclasses import dataclass, field
 from typing import Optional, Callable, List, Iterator
-from minidaft.plan import LogicalPlan
+from minieng.plan import LogicalPlan
 
 
 @dataclass(frozen=True)

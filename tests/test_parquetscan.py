@@ -1,7 +1,7 @@
 import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
-from minidaft.io.parquet import ParquetScan, Pushdowns
+from minieng.io.parquet import ParquetScan, Pushdowns
 
 def make_fixture(tmp_path):
     #create parquet file w/ 10 row groups; rg_i contains row where x = [i*100, ...., i*100 + 99]

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 import pyarrow as pa
-from minidaft.dtypes import LogicalType
+from minieng.dtypes import LogicalType
 #mapping from dtype -> arrow 
 LOGICAL_TO_ARROW = {
     LogicalType.INT64: pa.int64(),

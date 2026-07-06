@@ -1,5 +1,5 @@
-from minidaft.plan import Source, Filter, Project, Limit
-from minidaft.expressions import col, lit, FnCall
+from minieng.plan import Source, Filter, Project, Limit
+from minieng.expressions import col, lit, FnCall
 
 def test_plan():
     source = Source(path="orders.parquet")
